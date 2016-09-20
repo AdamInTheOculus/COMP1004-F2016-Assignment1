@@ -21,5 +21,10 @@ namespace COMP1004_F2016_Assignment1
         {
 
         }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

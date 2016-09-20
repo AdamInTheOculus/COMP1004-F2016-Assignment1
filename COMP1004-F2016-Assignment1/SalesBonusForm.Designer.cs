@@ -46,12 +46,16 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.GermanRadioButton = new System.Windows.Forms.RadioButton();
+            this.SpanishRadioButton = new System.Windows.Forms.RadioButton();
             this.LanguageGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // LanguageGroupBox
             // 
+            this.LanguageGroupBox.Controls.Add(this.SpanishRadioButton);
+            this.LanguageGroupBox.Controls.Add(this.GermanRadioButton);
             this.LanguageGroupBox.Controls.Add(this.FrenchRadioButton);
             this.LanguageGroupBox.Controls.Add(this.EnglishRadioButton);
             this.LanguageGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -66,7 +70,7 @@
             // 
             this.EnglishRadioButton.AutoSize = true;
             this.EnglishRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnglishRadioButton.Location = new System.Drawing.Point(16, 21);
+            this.EnglishRadioButton.Location = new System.Drawing.Point(6, 21);
             this.EnglishRadioButton.Name = "EnglishRadioButton";
             this.EnglishRadioButton.Size = new System.Drawing.Size(66, 19);
             this.EnglishRadioButton.TabIndex = 0;
@@ -78,7 +82,7 @@
             // 
             this.FrenchRadioButton.AutoSize = true;
             this.FrenchRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FrenchRadioButton.Location = new System.Drawing.Point(16, 47);
+            this.FrenchRadioButton.Location = new System.Drawing.Point(6, 46);
             this.FrenchRadioButton.Name = "FrenchRadioButton";
             this.FrenchRadioButton.Size = new System.Drawing.Size(63, 19);
             this.FrenchRadioButton.TabIndex = 1;
@@ -207,6 +211,31 @@
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
+            // GermanRadioButton
+            // 
+            this.GermanRadioButton.AutoSize = true;
+            this.GermanRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GermanRadioButton.Location = new System.Drawing.Point(75, 21);
+            this.GermanRadioButton.Name = "GermanRadioButton";
+            this.GermanRadioButton.Size = new System.Drawing.Size(70, 19);
+            this.GermanRadioButton.TabIndex = 2;
+            this.GermanRadioButton.TabStop = true;
+            this.GermanRadioButton.Text = "German";
+            this.GermanRadioButton.UseVisualStyleBackColor = true;
+            this.GermanRadioButton.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // SpanishRadioButton
+            // 
+            this.SpanishRadioButton.AutoSize = true;
+            this.SpanishRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpanishRadioButton.Location = new System.Drawing.Point(75, 46);
+            this.SpanishRadioButton.Name = "SpanishRadioButton";
+            this.SpanishRadioButton.Size = new System.Drawing.Size(70, 19);
+            this.SpanishRadioButton.TabIndex = 3;
+            this.SpanishRadioButton.TabStop = true;
+            this.SpanishRadioButton.Text = "Spanish";
+            this.SpanishRadioButton.UseVisualStyleBackColor = true;
+            // 
             // SalesBonusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,6 +286,8 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.RadioButton SpanishRadioButton;
+        private System.Windows.Forms.RadioButton GermanRadioButton;
     }
 }
 
