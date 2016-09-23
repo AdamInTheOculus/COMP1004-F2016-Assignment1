@@ -30,8 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesBonusForm));
             this.LanguageGroupBox = new System.Windows.Forms.GroupBox();
-            this.EnglishRadioButton = new System.Windows.Forms.RadioButton();
+            this.SpanishRadioButton = new System.Windows.Forms.RadioButton();
+            this.GermanRadioButton = new System.Windows.Forms.RadioButton();
             this.FrenchRadioButton = new System.Windows.Forms.RadioButton();
+            this.EnglishRadioButton = new System.Windows.Forms.RadioButton();
             this.EmployeeNameLabel = new System.Windows.Forms.Label();
             this.EmployeeIDLabel = new System.Windows.Forms.Label();
             this.HoursWorkedLabel = new System.Windows.Forms.Label();
@@ -46,8 +48,6 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.GermanRadioButton = new System.Windows.Forms.RadioButton();
-            this.SpanishRadioButton = new System.Windows.Forms.RadioButton();
             this.LanguageGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -66,17 +66,31 @@
             this.LanguageGroupBox.TabStop = false;
             this.LanguageGroupBox.Text = "Language";
             // 
-            // EnglishRadioButton
+            // SpanishRadioButton
             // 
-            this.EnglishRadioButton.AutoSize = true;
-            this.EnglishRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnglishRadioButton.Location = new System.Drawing.Point(6, 21);
-            this.EnglishRadioButton.Name = "EnglishRadioButton";
-            this.EnglishRadioButton.Size = new System.Drawing.Size(66, 19);
-            this.EnglishRadioButton.TabIndex = 0;
-            this.EnglishRadioButton.TabStop = true;
-            this.EnglishRadioButton.Text = "English";
-            this.EnglishRadioButton.UseVisualStyleBackColor = true;
+            this.SpanishRadioButton.AutoSize = true;
+            this.SpanishRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpanishRadioButton.Location = new System.Drawing.Point(75, 46);
+            this.SpanishRadioButton.Name = "SpanishRadioButton";
+            this.SpanishRadioButton.Size = new System.Drawing.Size(70, 19);
+            this.SpanishRadioButton.TabIndex = 3;
+            this.SpanishRadioButton.TabStop = true;
+            this.SpanishRadioButton.Text = "Spanish";
+            this.SpanishRadioButton.UseVisualStyleBackColor = true;
+            this.SpanishRadioButton.Click += new System.EventHandler(this.SpanishRadioButton_Click);
+            // 
+            // GermanRadioButton
+            // 
+            this.GermanRadioButton.AutoSize = true;
+            this.GermanRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GermanRadioButton.Location = new System.Drawing.Point(75, 21);
+            this.GermanRadioButton.Name = "GermanRadioButton";
+            this.GermanRadioButton.Size = new System.Drawing.Size(70, 19);
+            this.GermanRadioButton.TabIndex = 2;
+            this.GermanRadioButton.TabStop = true;
+            this.GermanRadioButton.Text = "German";
+            this.GermanRadioButton.UseVisualStyleBackColor = true;
+            this.GermanRadioButton.Click += new System.EventHandler(this.GermanRadioButton_Click);
             // 
             // FrenchRadioButton
             // 
@@ -89,6 +103,20 @@
             this.FrenchRadioButton.TabStop = true;
             this.FrenchRadioButton.Text = "French";
             this.FrenchRadioButton.UseVisualStyleBackColor = true;
+            this.FrenchRadioButton.Click += new System.EventHandler(this.FrenchRadioButton_Click);
+            // 
+            // EnglishRadioButton
+            // 
+            this.EnglishRadioButton.AutoSize = true;
+            this.EnglishRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnglishRadioButton.Location = new System.Drawing.Point(6, 21);
+            this.EnglishRadioButton.Name = "EnglishRadioButton";
+            this.EnglishRadioButton.Size = new System.Drawing.Size(66, 19);
+            this.EnglishRadioButton.TabIndex = 0;
+            this.EnglishRadioButton.TabStop = true;
+            this.EnglishRadioButton.Text = "English";
+            this.EnglishRadioButton.UseVisualStyleBackColor = true;
+            this.EnglishRadioButton.Click += new System.EventHandler(this.EnglishRadioButton_Click);
             // 
             // EmployeeNameLabel
             // 
@@ -107,7 +135,6 @@
             this.EmployeeIDLabel.Size = new System.Drawing.Size(70, 13);
             this.EmployeeIDLabel.TabIndex = 3;
             this.EmployeeIDLabel.Text = "Employee ID:";
-            this.EmployeeIDLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // HoursWorkedLabel
             // 
@@ -210,31 +237,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(75, 75);
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
-            // 
-            // GermanRadioButton
-            // 
-            this.GermanRadioButton.AutoSize = true;
-            this.GermanRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GermanRadioButton.Location = new System.Drawing.Point(75, 21);
-            this.GermanRadioButton.Name = "GermanRadioButton";
-            this.GermanRadioButton.Size = new System.Drawing.Size(70, 19);
-            this.GermanRadioButton.TabIndex = 2;
-            this.GermanRadioButton.TabStop = true;
-            this.GermanRadioButton.Text = "German";
-            this.GermanRadioButton.UseVisualStyleBackColor = true;
-            this.GermanRadioButton.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // SpanishRadioButton
-            // 
-            this.SpanishRadioButton.AutoSize = true;
-            this.SpanishRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SpanishRadioButton.Location = new System.Drawing.Point(75, 46);
-            this.SpanishRadioButton.Name = "SpanishRadioButton";
-            this.SpanishRadioButton.Size = new System.Drawing.Size(70, 19);
-            this.SpanishRadioButton.TabIndex = 3;
-            this.SpanishRadioButton.TabStop = true;
-            this.SpanishRadioButton.Text = "Spanish";
-            this.SpanishRadioButton.UseVisualStyleBackColor = true;
             // 
             // SalesBonusForm
             // 
