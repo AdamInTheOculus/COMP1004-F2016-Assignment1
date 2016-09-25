@@ -16,7 +16,7 @@ namespace COMP1004_F2016_Assignment1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SalesBonusForm());
+            Application.Run(new MailOrder());
         }
     }
 }

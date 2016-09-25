@@ -11,20 +11,20 @@ using System.Windows.Forms;
 
 namespace COMP1004_F2016_Assignment1
 {
-    public partial class SalesBonusForm : Form
+    public partial class MailOrder : Form
     {
         // PRIVATE INSTANCE VARIABLES -------------------------------------------------------------
-        private String currentLanguage;
+        private String _currentLanguage;
 
         // PUBLIC PROPERTIES ----------------------------------------------------------------------
         public String CurrentLanguage
         {
-            get { return this.currentLanguage; }
-            set { this.currentLanguage = value; }
+            get { return this._currentLanguage; }
+            set { this._currentLanguage = value; }
         }
 
         // CONSTRUCTOR ----------------------------------------------------------------------------
-        public SalesBonusForm()
+        public MailOrder()
         {
             InitializeComponent();
 

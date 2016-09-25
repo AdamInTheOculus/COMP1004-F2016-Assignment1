@@ -1,6 +1,6 @@
 ﻿namespace COMP1004_F2016_Assignment1
 {
-    partial class SalesBonusForm
+    partial class MailOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesBonusForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MailOrder));
             this.LanguageGroupBox = new System.Windows.Forms.GroupBox();
             this.SpanishRadioButton = new System.Windows.Forms.RadioButton();
             this.GermanRadioButton = new System.Windows.Forms.RadioButton();
@@ -238,7 +238,7 @@
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
-            // SalesBonusForm
+            // MailOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -258,9 +258,9 @@
             this.Controls.Add(this.EmployeeIDLabel);
             this.Controls.Add(this.EmployeeNameLabel);
             this.Controls.Add(this.LanguageGroupBox);
-            this.Name = "SalesBonusForm";
+            this.Name = "MailOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sales Bonus";
+            this.Text = "Mail Order";
             this.LanguageGroupBox.ResumeLayout(false);
             this.LanguageGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
