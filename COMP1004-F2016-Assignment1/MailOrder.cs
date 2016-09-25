@@ -135,9 +135,53 @@ namespace COMP1004_F2016_Assignment1
                     // Update language box title
                     LanguageGroupBox.Text = "Sprache";
                     break;
+
                 default:
                     Debug.WriteLine("ERROR: Invalid language selected.");
                     break;
+            }
+        }
+
+        private void clearForm()
+        {
+            // Update text boxes to empty strings
+            EmployeeNameTextBox.Text = "";
+            EmployeeIDTextBox.Text = "";
+            HoursWorkedTextBox.Text = "";
+            TotalSalesTextBox.Text = "";
+            SalesBonusTextBox.Text = "";
+        }
+
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            // We need to do some serious error handling at this point.
+            ErrorManager errorHandler = new ErrorManager();
+
+            // Validate all text fields.
+            // If errors are found, they will be added to ErrorManager's error queue.
+            errorHandler.validateEmployeeName(EmployeeNameTextBox.Text);
+            errorHandler.validateEmployeeID(EmployeeIDTextBox.Text);
+            errorHandler.validateHoursWorked(HoursWorkedTextBox.Text);
+            errorHandler.validateTotalSales(TotalSalesTextBox.Text);
+
+            // Errors were found. Print alert window and restart form.
+            if(errorHandler.HasErrors)
+            {
+                // Disable interaction with form when displaying error window.
+                this.Enabled = false;
+                errorHandler.displayErrorLog();
+
+                Debug.WriteLine("Errors Found.");
+
+                // Re-enable interaction and clear input fields.
+                this.Enabled = true;
+                clearForm();
+            }
+
+            // No errors were found. Perform calculation and update form.
+            else
+            {
+                SalesBonusTextBox.Text = "No Errors!";
             }
         }
     }

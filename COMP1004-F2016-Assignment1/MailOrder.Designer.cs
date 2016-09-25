@@ -42,11 +42,11 @@
             this.CalculateButton = new System.Windows.Forms.Button();
             this.PrintButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.EmployeeNameTextBox = new System.Windows.Forms.TextBox();
+            this.EmployeeIDTextBox = new System.Windows.Forms.TextBox();
+            this.HoursWorkedTextBox = new System.Windows.Forms.TextBox();
+            this.TotalSalesTextBox = new System.Windows.Forms.TextBox();
+            this.SalesBonusTextBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LanguageGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -171,6 +171,7 @@
             this.CalculateButton.TabIndex = 7;
             this.CalculateButton.Text = "Calculate";
             this.CalculateButton.UseVisualStyleBackColor = true;
+            this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
             // 
             // PrintButton
             // 
@@ -190,42 +191,41 @@
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // EmployeeNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 96);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 20);
-            this.textBox1.TabIndex = 10;
+            this.EmployeeNameTextBox.Location = new System.Drawing.Point(118, 96);
+            this.EmployeeNameTextBox.Name = "EmployeeNameTextBox";
+            this.EmployeeNameTextBox.Size = new System.Drawing.Size(154, 20);
+            this.EmployeeNameTextBox.TabIndex = 10;
             // 
-            // textBox2
+            // EmployeeIDTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(118, 121);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(115, 20);
-            this.textBox2.TabIndex = 11;
+            this.EmployeeIDTextBox.Location = new System.Drawing.Point(118, 121);
+            this.EmployeeIDTextBox.Name = "EmployeeIDTextBox";
+            this.EmployeeIDTextBox.Size = new System.Drawing.Size(115, 20);
+            this.EmployeeIDTextBox.TabIndex = 11;
             // 
-            // textBox3
+            // HoursWorkedTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(118, 147);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(115, 20);
-            this.textBox3.TabIndex = 12;
+            this.HoursWorkedTextBox.Location = new System.Drawing.Point(118, 147);
+            this.HoursWorkedTextBox.Name = "HoursWorkedTextBox";
+            this.HoursWorkedTextBox.Size = new System.Drawing.Size(115, 20);
+            this.HoursWorkedTextBox.TabIndex = 12;
             // 
-            // textBox4
+            // TotalSalesTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(118, 172);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(115, 20);
-            this.textBox4.TabIndex = 13;
+            this.TotalSalesTextBox.Location = new System.Drawing.Point(118, 172);
+            this.TotalSalesTextBox.Name = "TotalSalesTextBox";
+            this.TotalSalesTextBox.Size = new System.Drawing.Size(115, 20);
+            this.TotalSalesTextBox.TabIndex = 13;
             // 
-            // textBox5
+            // SalesBonusTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(118, 197);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(115, 20);
-            this.textBox5.TabIndex = 14;
+            this.SalesBonusTextBox.Location = new System.Drawing.Point(118, 197);
+            this.SalesBonusTextBox.Name = "SalesBonusTextBox";
+            this.SalesBonusTextBox.ReadOnly = true;
+            this.SalesBonusTextBox.Size = new System.Drawing.Size(115, 20);
+            this.SalesBonusTextBox.TabIndex = 14;
             // 
             // pictureBox1
             // 
@@ -244,11 +244,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.SalesBonusTextBox);
+            this.Controls.Add(this.TotalSalesTextBox);
+            this.Controls.Add(this.HoursWorkedTextBox);
+            this.Controls.Add(this.EmployeeIDTextBox);
+            this.Controls.Add(this.EmployeeNameTextBox);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.PrintButton);
             this.Controls.Add(this.CalculateButton);
@@ -282,11 +282,11 @@
         private System.Windows.Forms.Button CalculateButton;
         private System.Windows.Forms.Button PrintButton;
         private System.Windows.Forms.Button ClearButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox EmployeeNameTextBox;
+        private System.Windows.Forms.TextBox EmployeeIDTextBox;
+        private System.Windows.Forms.TextBox HoursWorkedTextBox;
+        private System.Windows.Forms.TextBox TotalSalesTextBox;
+        private System.Windows.Forms.TextBox SalesBonusTextBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RadioButton SpanishRadioButton;
         private System.Windows.Forms.RadioButton GermanRadioButton;
