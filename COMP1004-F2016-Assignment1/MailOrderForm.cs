@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace COMP1004_F2016_Assignment1
 {
-    public partial class MailOrder : Form
+    public partial class MailOrderForm : Form
     {
         // PRIVATE INSTANCE VARIABLES -------------------------------------------------------------
         private String _currentLanguage;
@@ -24,7 +24,7 @@ namespace COMP1004_F2016_Assignment1
         }
 
         // CONSTRUCTOR ----------------------------------------------------------------------------
-        public MailOrder()
+        public MailOrderForm()
         {
             InitializeComponent();
 
@@ -38,32 +38,83 @@ namespace COMP1004_F2016_Assignment1
         {
             EnglishRadioButton.Checked = true;
             this.CurrentLanguage = "English";
-            changeLabelLanguage();
+            _changeLabelLanguage();
         }
 
         private void GermanRadioButton_Click(object sender, EventArgs e)
         {
             GermanRadioButton.Checked = true;
             this.CurrentLanguage = "German";
-            changeLabelLanguage();
+            _changeLabelLanguage();
         }
 
         private void FrenchRadioButton_Click(object sender, EventArgs e)
         {
             FrenchRadioButton.Checked = true;
             this.CurrentLanguage = "French";
-            changeLabelLanguage();
+            _changeLabelLanguage();
         }
 
         private void SpanishRadioButton_Click(object sender, EventArgs e)
         {
             SpanishRadioButton.Checked = true;
             this.CurrentLanguage = "Spanish";
-            changeLabelLanguage();
+            _changeLabelLanguage();
+        }
+
+        /// <summary>
+        /// This method will take all input from text boxes and ensure they contain valid data.
+        /// 
+        /// IF the data is NOT valid
+        ///     Create an error window and display all errors found
+        /// ELSE
+        ///     Calculate the numbers and update textboxes to display calculated value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            // We need to do some serious error handling at this point.
+            ErrorManager errorHandler = new ErrorManager();
+
+            // Validate all text fields.
+            // If errors are found, they will be added to ErrorManager's error queue.
+            errorHandler.validateEmployeeName(EmployeeNameTextBox.Text);
+            errorHandler.validateEmployeeID(EmployeeIDTextBox.Text);
+            errorHandler.validateHoursWorked(HoursWorkedTextBox.Text);
+            errorHandler.validateTotalSales(TotalSalesTextBox.Text);
+
+            // Errors were found. Print alert window and restart form.
+            if (errorHandler.HasErrors)
+            {
+                // Disable interaction with form when displaying error window.
+                this.Enabled = false;
+                errorHandler.displayErrorLog();
+
+                // Re-enable interaction and clear input fields.
+                this.Enabled = true;
+                errorHandler.ErrorLog.Clear();
+            }
+
+            // No errors were found. Perform calculation and update form.
+            else
+            {
+                SalesBonusTextBox.Text = "No Errors!";
+            }
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            _clearForm();
         }
 
         // UTILITY METHODS ------------------------------------------------------------------------
-        private void changeLabelLanguage()
+
+        /// <summary>
+        /// This method takes the value of CurrentLanguage and 
+        /// changes the Label.Text values to the corresponding language.
+        /// </summary>
+        private void _changeLabelLanguage()
         {
             // Determine what the current language is and change labels accordingly
             switch (this.CurrentLanguage)
@@ -142,47 +193,17 @@ namespace COMP1004_F2016_Assignment1
             }
         }
 
-        private void clearForm()
+        /// <summary>
+        /// This method clears all TextBox fields EXCEPT for TotalSalesTextBox.
+        /// This is following assignment spec.
+        /// </summary>
+        private void _clearForm()
         {
             // Update text boxes to empty strings
             EmployeeNameTextBox.Text = "";
             EmployeeIDTextBox.Text = "";
             HoursWorkedTextBox.Text = "";
-            TotalSalesTextBox.Text = "";
             SalesBonusTextBox.Text = "";
-        }
-
-        private void CalculateButton_Click(object sender, EventArgs e)
-        {
-            // We need to do some serious error handling at this point.
-            ErrorManager errorHandler = new ErrorManager();
-
-            // Validate all text fields.
-            // If errors are found, they will be added to ErrorManager's error queue.
-            errorHandler.validateEmployeeName(EmployeeNameTextBox.Text);
-            errorHandler.validateEmployeeID(EmployeeIDTextBox.Text);
-            errorHandler.validateHoursWorked(HoursWorkedTextBox.Text);
-            errorHandler.validateTotalSales(TotalSalesTextBox.Text);
-
-            // Errors were found. Print alert window and restart form.
-            if(errorHandler.HasErrors)
-            {
-                // Disable interaction with form when displaying error window.
-                this.Enabled = false;
-                errorHandler.displayErrorLog();
-
-                Debug.WriteLine("Errors Found.");
-
-                // Re-enable interaction and clear input fields.
-                this.Enabled = true;
-                clearForm();
-            }
-
-            // No errors were found. Perform calculation and update form.
-            else
-            {
-                SalesBonusTextBox.Text = "No Errors!";
-            }
         }
     }
 }

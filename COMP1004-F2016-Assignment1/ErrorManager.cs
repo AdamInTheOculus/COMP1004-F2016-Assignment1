@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace COMP1004_F2016_Assignment1
 {
@@ -26,6 +27,11 @@ namespace COMP1004_F2016_Assignment1
                 }
         }
 
+        public List<String> ErrorLog
+        {
+            get { return this._errorLog; }
+        }
+
         // CONSTRUCTOR ----------------------------------------------------------------------------
         public ErrorManager()
         {
@@ -39,17 +45,17 @@ namespace COMP1004_F2016_Assignment1
             // Ensure name isn't empty/null
             if(employeeName == null || employeeName == "")
             {
-                addErrorEvent("Given employee name was either null or empty.");
+                _addErrorEvent("Given employee name was either null or empty.");
             }
 
             else
             {
                 // Ensure name has only characters; no numbers/symbols.
                 // This regular expression accepts any alphabetical character or spaces. Case insensitive.
-                Regex lettersOnly = new Regex(@"[a-z][A-Z]+[\s]*");
+                Regex lettersOnly = new Regex(@"^[a-zA-Z ]+$");
                 if (!lettersOnly.IsMatch(employeeName))
                 {
-                    addErrorEvent("Given employee contains invalid characters. Do not use numbers or symbols.");
+                    _addErrorEvent("Given employee contains invalid characters. Do not use numbers or symbols.");
                 }
             }
         }
@@ -59,7 +65,7 @@ namespace COMP1004_F2016_Assignment1
             // Ensure ID isn't empty or null
             if(employeeID == null || employeeID == "")
             {
-                addErrorEvent("Given employee ID was either null or empty.");
+                _addErrorEvent("Given employee ID was either null or empty.");
             }
 
             else
@@ -69,7 +75,7 @@ namespace COMP1004_F2016_Assignment1
                 Regex digitsOnly = new Regex(@"^[0-9]+$");
                 if (!digitsOnly.IsMatch(employeeID))
                 {
-                    addErrorEvent("Given employee ID contains invalid characters. Only use numerical digits. No spaces.");
+                    _addErrorEvent("Given employee ID contains invalid characters. Only use numerical digits. No spaces.");
                 }
             }
         }
@@ -86,17 +92,17 @@ namespace COMP1004_F2016_Assignment1
                 // Ensure hoursWorked is in valid range.
                 if (hoursWorked <= 0 || hoursWorked > 160)
                 {
-                    addErrorEvent("Given hours worked is invalid. Enter a number between [1-160].");
+                    _addErrorEvent("Given hours worked is invalid. Enter a number between [1-160].");
                 }
             }
             // Handle any exceptions from parsing string.
             catch (InvalidCastException e)
             {
-                addErrorEvent("Attempted to parse hours worked and received InvalidCastException.");
+                _addErrorEvent("Attempted to parse hours worked and received InvalidCastException.");
             }
             catch(FormatException e)
             {
-                addErrorEvent("Attempted to parse hours worked and received FormatException.");
+                _addErrorEvent("Attempted to parse hours worked and received FormatException.");
             }
         }
 
@@ -112,35 +118,53 @@ namespace COMP1004_F2016_Assignment1
                 // Ensure totalSales is in valid range.
                 if(totalSales <= 0)
                 {
-                    addErrorEvent("Given total sales is invalid. Enter a number greater than zero.");
+                    _addErrorEvent("Given total sales is invalid. Enter a number greater than zero.");
                 }
             }
             // Handle any exceptions from parsing string.
             catch (InvalidCastException e)
             {
-                addErrorEvent("Attempted to parse total sales and received InvalidCastException.");
+                _addErrorEvent("Attempted to parse total sales and received InvalidCastException.");
             }
             catch (FormatException e)
             {
-                addErrorEvent("Attempted to parse total sales and received FormatException.");
+                _addErrorEvent("Attempted to parse total sales and received FormatException.");
             }
         }
 
         public void displayErrorLog()
         {
-            // Create temporary form that displays all error messages.
-            Debug.WriteLine("Inside displayErrorLog()");
-
-            // Form size will be dynamic to number of messages in error log.
-
-            // Clear error log once form has been closed.
-            _errorLog.Clear();
+            // Create and open our Message Box
+            String errorText = _generateErrorString();
+            MessageBox.Show(errorText, "Errors Found", MessageBoxButtons.OK);
         }
 
         // PRIVATE METHODS ------------------------------------------------------------------------
-        private void addErrorEvent(String error)
+        private void _addErrorEvent(String error)
         {
             _errorLog.Add(error);
         }
+
+        /// <summary>
+        /// Take current error list and generate a single string to add to text box.
+        /// Return generated string.
+        /// </summary>
+        /// <param name="errorList"></param>
+        /// <returns></returns>
+        private String _generateErrorString()
+        {
+            String errorText = "";
+
+            // Append each error message into one big string
+            foreach (String text in this._errorLog)
+            {
+                Debug.WriteLine("Message: " + text);
+                errorText += "- " + text + "\n";
+            }
+
+            // Return generated error message
+            return errorText;
+        }
+
     }
 }

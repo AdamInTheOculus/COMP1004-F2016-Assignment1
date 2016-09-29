@@ -1,6 +1,6 @@
 ﻿namespace COMP1004_F2016_Assignment1
 {
-    partial class MailOrder
+    partial class MailOrderForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MailOrder));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MailOrderForm));
             this.LanguageGroupBox = new System.Windows.Forms.GroupBox();
             this.SpanishRadioButton = new System.Windows.Forms.RadioButton();
             this.GermanRadioButton = new System.Windows.Forms.RadioButton();
@@ -190,6 +190,7 @@
             this.ClearButton.TabIndex = 9;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // EmployeeNameTextBox
             // 
@@ -238,7 +239,7 @@
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
-            // MailOrder
+            // MailOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -258,7 +259,7 @@
             this.Controls.Add(this.EmployeeIDLabel);
             this.Controls.Add(this.EmployeeNameLabel);
             this.Controls.Add(this.LanguageGroupBox);
-            this.Name = "MailOrder";
+            this.Name = "MailOrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mail Order";
             this.LanguageGroupBox.ResumeLayout(false);
