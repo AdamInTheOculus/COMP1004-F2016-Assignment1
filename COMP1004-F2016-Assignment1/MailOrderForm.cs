@@ -90,16 +90,15 @@ namespace COMP1004_F2016_Assignment1
                 // Disable interaction with form when displaying error window.
                 this.Enabled = false;
                 errorHandler.displayErrorLog();
-
-                // Re-enable interaction and clear input fields.
                 this.Enabled = true;
-                errorHandler.ErrorLog.Clear();
             }
 
             // No errors were found. Perform calculation and update form.
             else
             {
-                SalesBonusTextBox.Text = "No Errors!";
+                // Perform bonus calculation
+                String bonusSales = _calculateBonusSales();
+                SalesBonusTextBox.Text = bonusSales;
             }
         }
 
@@ -204,6 +203,35 @@ namespace COMP1004_F2016_Assignment1
             EmployeeIDTextBox.Text = "";
             HoursWorkedTextBox.Text = "";
             SalesBonusTextBox.Text = "";
+        }
+
+        private String _calculateBonusSales()
+        {
+            double salesBonus;
+            try
+            {
+                // Convert values
+                double hoursWorked = Double.Parse(HoursWorkedTextBox.Text);
+                double totalSales = Double.Parse(TotalSalesTextBox.Text);
+
+                double percentageOfHours = hoursWorked / 160;
+                double totalBonusAmount = totalSales * 0.02;
+
+                // Perform calculation
+                salesBonus = percentageOfHours * totalBonusAmount;
+            }
+            catch (InvalidCastException e)
+            {
+                salesBonus = 0;
+                MessageBox.Show("_calculateBonusSales() error: InvalidCastException thrown.");
+            }
+            catch (FormatException e)
+            {
+                salesBonus = 0;
+                MessageBox.Show("_calculateBonusSales() error: FormatException thrown.");
+            }
+
+            return salesBonus.ToString("C2");
         }
     }
 }

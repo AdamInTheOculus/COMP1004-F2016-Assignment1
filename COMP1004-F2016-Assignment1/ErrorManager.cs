@@ -98,11 +98,11 @@ namespace COMP1004_F2016_Assignment1
             // Handle any exceptions from parsing string.
             catch (InvalidCastException e)
             {
-                _addErrorEvent("Attempted to parse hours worked and received InvalidCastException.");
+                _addErrorEvent("Given hours worked was the wrong type. Enter a number between [1-160].");
             }
             catch(FormatException e)
             {
-                _addErrorEvent("Attempted to parse hours worked and received FormatException.");
+                _addErrorEvent("Given hours worked generated an error. Enter a number between [1-160].");
             }
         }
 
@@ -124,11 +124,11 @@ namespace COMP1004_F2016_Assignment1
             // Handle any exceptions from parsing string.
             catch (InvalidCastException e)
             {
-                _addErrorEvent("Attempted to parse total sales and received InvalidCastException.");
+                _addErrorEvent("Given total sales was the wrong type. Enter a number greater than zero.");
             }
             catch (FormatException e)
             {
-                _addErrorEvent("Attempted to parse total sales and received FormatException.");
+                _addErrorEvent("Given total sales was the wrong type. Enter a number greater than zero.");
             }
         }
 
@@ -137,6 +137,9 @@ namespace COMP1004_F2016_Assignment1
             // Create and open our Message Box
             String errorText = _generateErrorString();
             MessageBox.Show(errorText, "Errors Found", MessageBoxButtons.OK);
+
+            // Empty our error log
+            this._errorLog.Clear();
         }
 
         // PRIVATE METHODS ------------------------------------------------------------------------
