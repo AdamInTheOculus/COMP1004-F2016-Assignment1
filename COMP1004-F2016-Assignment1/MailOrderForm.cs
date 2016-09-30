@@ -15,6 +15,7 @@ namespace COMP1004_F2016_Assignment1
     {
         // PRIVATE INSTANCE VARIABLES -------------------------------------------------------------
         private String _currentLanguage;
+        private ErrorManager _errorHandler;
 
         // PUBLIC PROPERTIES ----------------------------------------------------------------------
         public String CurrentLanguage
@@ -31,6 +32,9 @@ namespace COMP1004_F2016_Assignment1
             // Start language as english
             EnglishRadioButton.Checked = true;
             this.CurrentLanguage = "English";
+
+            // Instantiate error handler
+            this._errorHandler = new ErrorManager();
         }
 
         // EVENT HANDLING METHODS -----------------------------------------------------------------
@@ -74,31 +78,35 @@ namespace COMP1004_F2016_Assignment1
         /// <param name="e"></param>
         private void CalculateButton_Click(object sender, EventArgs e)
         {
-            // We need to do some serious error handling at this point.
-            ErrorManager errorHandler = new ErrorManager();
-
-            // Validate all text fields.
-            // If errors are found, they will be added to ErrorManager's error queue.
-            errorHandler.validateEmployeeName(EmployeeNameTextBox.Text);
-            errorHandler.validateEmployeeID(EmployeeIDTextBox.Text);
-            errorHandler.validateHoursWorked(HoursWorkedTextBox.Text);
-            errorHandler.validateTotalSales(TotalSalesTextBox.Text);
-
-            // Errors were found. Print alert window and restart form.
-            if (errorHandler.HasErrors)
-            {
-                // Disable interaction with form when displaying error window.
-                this.Enabled = false;
-                errorHandler.displayErrorLog();
-                this.Enabled = true;
-            }
-
             // No errors were found. Perform calculation and update form.
-            else
+            if (_isDataValid())
             {
                 // Perform bonus calculation
                 String bonusSales = _calculateBonusSales();
                 SalesBonusTextBox.Text = bonusSales;
+            }
+
+            // Errors were found. Print alert window and restart form.
+            else
+            {
+                // Disable interaction with form when displaying error window.
+                this.Enabled = false;
+                _errorHandler.displayErrorLog();
+                this.Enabled = true;
+            }
+        }
+
+        private void PrintButton_Click(object sender, EventArgs e)
+        {
+            // Display MessageBox with current information
+            // Include message that says the document has been sent to the printer
+            if (_isDataValid())
+            {
+                MessageBox.Show("Document sent to printer.", "Print Document Message", MessageBoxButtons.OK);
+            }
+            else
+            {
+                _errorHandler.displayErrorLog();
             }
         }
 
@@ -205,6 +213,20 @@ namespace COMP1004_F2016_Assignment1
             SalesBonusTextBox.Text = "";
         }
 
+        private Boolean _isDataValid()
+        {
+            // Validate all text fields.
+            // If errors are found, they will be added to ErrorManager's error queue.
+            _errorHandler.validateEmployeeName(EmployeeNameTextBox.Text);
+            _errorHandler.validateEmployeeID(EmployeeIDTextBox.Text);
+            _errorHandler.validateHoursWorked(HoursWorkedTextBox.Text);
+            _errorHandler.validateTotalSales(TotalSalesTextBox.Text);
+
+            // Return false if errors were found
+            if (_errorHandler.HasErrors) { return false; }
+            else { return true; }
+        }
+
         private String _calculateBonusSales()
         {
             double salesBonus;
@@ -214,10 +236,9 @@ namespace COMP1004_F2016_Assignment1
                 double hoursWorked = Double.Parse(HoursWorkedTextBox.Text);
                 double totalSales = Double.Parse(TotalSalesTextBox.Text);
 
+                // Perform calculation
                 double percentageOfHours = hoursWorked / 160;
                 double totalBonusAmount = totalSales * 0.02;
-
-                // Perform calculation
                 salesBonus = percentageOfHours * totalBonusAmount;
             }
             catch (InvalidCastException e)
@@ -231,6 +252,7 @@ namespace COMP1004_F2016_Assignment1
                 MessageBox.Show("_calculateBonusSales() error: FormatException thrown.");
             }
 
+            // Return string in currency format (Ex. $1235.56)
             return salesBonus.ToString("C2");
         }
     }

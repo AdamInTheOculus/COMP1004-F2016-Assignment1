@@ -181,6 +181,7 @@
             this.PrintButton.TabIndex = 8;
             this.PrintButton.Text = "Print";
             this.PrintButton.UseVisualStyleBackColor = true;
+            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
             // 
             // ClearButton
             // 
