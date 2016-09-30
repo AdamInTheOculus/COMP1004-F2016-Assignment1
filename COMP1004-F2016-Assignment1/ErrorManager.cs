@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ * APP NAME: Sharp Mail Order - ORDER FORM
+ * AUTHOR NAME: Adam Sinclair
+ * AUTHOR ID: 200321984
+ * APP CREATION DATE: September 20th 2016
+ * APP DESCRIPTION: 
+ *    A small form application that takes in employee information, # of hours worked, and the total sales amount.
+ *    A Calculate button will determine the amount of sales bonus an employee receives.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -40,6 +50,12 @@ namespace COMP1004_F2016_Assignment1
         }
 
         // PUBLIC METHODS -------------------------------------------------------------------------
+
+        /// <summary>
+        /// Error validation. Validates employee name is only characters and spaces.
+        /// If it's not, add error to error list.
+        /// </summary>
+        /// <param name="employeeName"></param>
         public void validateEmployeeName(String employeeName)
         {
             // Ensure name isn't empty/null
@@ -60,6 +76,11 @@ namespace COMP1004_F2016_Assignment1
             }
         }
 
+        /// <summary>
+        /// Error validation. Validate employeeID is only positive numbers.
+        /// If it's not, add error to error list
+        /// </summary>
+        /// <param name="employeeID"></param>
         public void validateEmployeeID(String employeeID)
         {
             // Ensure ID isn't empty or null
@@ -80,6 +101,11 @@ namespace COMP1004_F2016_Assignment1
             }
         }
 
+        /// <summary>
+        /// Error validation. Validate hoursWorked is truly a double.
+        /// If it's not, add error to error list.
+        /// </summary>
+        /// <param name="hoursString"></param>
         public void validateHoursWorked(String hoursString)
         {
             double hoursWorked;
@@ -106,6 +132,11 @@ namespace COMP1004_F2016_Assignment1
             }
         }
 
+        /// <summary>
+        /// Error validation. Validate totalSales is truly a double.
+        /// If it's not, add error to error list.
+        /// </summary>
+        /// <param name="totalString"></param>
         public void validateTotalSales(String totalString)
         {
             double totalSales;
@@ -132,6 +163,9 @@ namespace COMP1004_F2016_Assignment1
             }
         }
 
+        /// <summary>
+        /// Display message box of all errors in error log
+        /// </summary>
         public void displayErrorLog()
         {
             // Create and open our Message Box
@@ -143,6 +177,10 @@ namespace COMP1004_F2016_Assignment1
         }
 
         // PRIVATE METHODS ------------------------------------------------------------------------
+        /// <summary>
+        /// Add error message to the error list
+        /// </summary>
+        /// <param name="error"></param>
         private void _addErrorEvent(String error)
         {
             _errorLog.Add(error);
@@ -161,7 +199,6 @@ namespace COMP1004_F2016_Assignment1
             // Append each error message into one big string
             foreach (String text in this._errorLog)
             {
-                Debug.WriteLine("Message: " + text);
                 errorText += "- " + text + "\n";
             }
 

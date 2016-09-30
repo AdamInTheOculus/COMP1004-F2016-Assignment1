@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ * APP NAME: Sharp Mail Order - ORDER FORM
+ * AUTHOR NAME: Adam Sinclair
+ * AUTHOR ID: 200321984
+ * APP CREATION DATE: September 20th 2016
+ * APP DESCRIPTION: 
+ *    A small form application that takes in employee information, # of hours worked, and the total sales amount.
+ *    A Calculate button will determine the amount of sales bonus an employee receives.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -115,6 +125,16 @@ namespace COMP1004_F2016_Assignment1
             _clearForm();
         }
 
+        /// <summary>
+        /// Close down application if user presses 'X' to close window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MailOrderForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
         // UTILITY METHODS ------------------------------------------------------------------------
 
         /// <summary>
@@ -213,6 +233,13 @@ namespace COMP1004_F2016_Assignment1
             SalesBonusTextBox.Text = "";
         }
 
+        /// <summary>
+        /// This method takes all text box data and sends it to the error handler. The error handler determines if
+        /// the data is valid. If it is not valid, an error is added to an error list. 
+        /// Return true if there are no errors.
+        /// Return false if there are errors.
+        /// </summary>
+        /// <returns></returns>
         private Boolean _isDataValid()
         {
             // Validate all text fields.
@@ -227,6 +254,10 @@ namespace COMP1004_F2016_Assignment1
             else { return true; }
         }
 
+        /// <summary>
+        /// This method performs mathematical operations to determine the sales bonus an employee will receive.
+        /// </summary>
+        /// <returns></returns>
         private String _calculateBonusSales()
         {
             double salesBonus;

@@ -53,10 +53,19 @@
     <Compile Include="MailOrderForm.Designer.cs">
       <DependentUpon>MailOrderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MailSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MailSplashScreen.Designer.cs">
+      <DependentUpon>MailSplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MailOrderForm.resx">
       <DependentUpon>MailOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MailSplashScreen.resx">
+      <DependentUpon>MailSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

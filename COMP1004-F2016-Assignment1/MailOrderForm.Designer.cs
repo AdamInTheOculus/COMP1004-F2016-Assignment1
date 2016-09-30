@@ -263,6 +263,7 @@
             this.Name = "MailOrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mail Order";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MailOrderForm_FormClosing);
             this.LanguageGroupBox.ResumeLayout(false);
             this.LanguageGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
